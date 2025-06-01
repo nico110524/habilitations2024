@@ -48,15 +48,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.grbDeveloppeur = new System.Windows.Forms.GroupBox();
+            this.btn_recherche = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbo_profil_recherche = new System.Windows.Forms.ComboBox();
             this.btnDemandeChangePwd = new System.Windows.Forms.Button();
             this.btnDemandeSupprDev = new System.Windows.Forms.Button();
             this.btnDemandeModifDev = new System.Windows.Forms.Button();
             this.grbLesDeveloppeurs = new System.Windows.Forms.GroupBox();
             this.dgvDeveloppeurs = new System.Windows.Forms.DataGridView();
+            this.grbRecherche = new System.Windows.Forms.GroupBox();
             this.grbPwd.SuspendLayout();
             this.grbDeveloppeur.SuspendLayout();
             this.grbLesDeveloppeurs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeveloppeurs)).BeginInit();
+            this.grbRecherche.SuspendLayout();
             this.SuspendLayout();
             // 
             // label7
@@ -114,7 +119,7 @@
             this.grbPwd.Controls.Add(this.txtPwd2);
             this.grbPwd.Controls.Add(this.txtPwd1);
             this.grbPwd.Controls.Add(this.label6);
-            this.grbPwd.Location = new System.Drawing.Point(11, 415);
+            this.grbPwd.Location = new System.Drawing.Point(12, 467);
             this.grbPwd.Name = "grbPwd";
             this.grbPwd.Size = new System.Drawing.Size(605, 77);
             this.grbPwd.TabIndex = 6;
@@ -249,12 +254,39 @@
             this.grbDeveloppeur.Controls.Add(this.txtPrenom);
             this.grbDeveloppeur.Controls.Add(this.label1);
             this.grbDeveloppeur.Controls.Add(this.txtNom);
-            this.grbDeveloppeur.Location = new System.Drawing.Point(11, 280);
+            this.grbDeveloppeur.Location = new System.Drawing.Point(12, 332);
             this.grbDeveloppeur.Name = "grbDeveloppeur";
             this.grbDeveloppeur.Size = new System.Drawing.Size(605, 129);
             this.grbDeveloppeur.TabIndex = 5;
             this.grbDeveloppeur.TabStop = false;
             this.grbDeveloppeur.Text = "ajouter un développeur";
+            // 
+            // btn_recherche
+            // 
+            this.btn_recherche.Location = new System.Drawing.Point(6, 17);
+            this.btn_recherche.Name = "btn_recherche";
+            this.btn_recherche.Size = new System.Drawing.Size(75, 23);
+            this.btn_recherche.TabIndex = 13;
+            this.btn_recherche.Text = "rechercher";
+            this.btn_recherche.UseVisualStyleBackColor = true;
+            this.btn_recherche.Click += new System.EventHandler(this.btn_recherche_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(308, 17);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(30, 13);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Profil";
+            // 
+            // cbo_profil_recherche
+            // 
+            this.cbo_profil_recherche.FormattingEnabled = true;
+            this.cbo_profil_recherche.Location = new System.Drawing.Point(354, 17);
+            this.cbo_profil_recherche.Name = "cbo_profil_recherche";
+            this.cbo_profil_recherche.Size = new System.Drawing.Size(121, 21);
+            this.cbo_profil_recherche.TabIndex = 11;
             // 
             // btnDemandeChangePwd
             // 
@@ -315,22 +347,38 @@
             this.dgvDeveloppeurs.Size = new System.Drawing.Size(581, 206);
             this.dgvDeveloppeurs.TabIndex = 0;
             // 
+            // grbRecherche
+            // 
+            this.grbRecherche.Controls.Add(this.cbo_profil_recherche);
+            this.grbRecherche.Controls.Add(this.label8);
+            this.grbRecherche.Controls.Add(this.btn_recherche);
+            this.grbRecherche.Location = new System.Drawing.Point(12, 270);
+            this.grbRecherche.Name = "grbRecherche";
+            this.grbRecherche.Size = new System.Drawing.Size(605, 56);
+            this.grbRecherche.TabIndex = 7;
+            this.grbRecherche.TabStop = false;
+            this.grbRecherche.Text = "recherche";
+            // 
             // FrmHabilitations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(627, 502);
+            this.ClientSize = new System.Drawing.Size(627, 551);
+            this.Controls.Add(this.grbRecherche);
             this.Controls.Add(this.grbPwd);
             this.Controls.Add(this.grbDeveloppeur);
             this.Controls.Add(this.grbLesDeveloppeurs);
             this.Name = "FrmHabilitations";
             this.Text = "Habilitations";
+            this.Load += new System.EventHandler(this.FrmHabilitations_Load);
             this.grbPwd.ResumeLayout(false);
             this.grbPwd.PerformLayout();
             this.grbDeveloppeur.ResumeLayout(false);
             this.grbDeveloppeur.PerformLayout();
             this.grbLesDeveloppeurs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeveloppeurs)).EndInit();
+            this.grbRecherche.ResumeLayout(false);
+            this.grbRecherche.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -362,6 +410,10 @@
         private System.Windows.Forms.Button btnDemandeModifDev;
         private System.Windows.Forms.GroupBox grbLesDeveloppeurs;
         private System.Windows.Forms.DataGridView dgvDeveloppeurs;
+        private System.Windows.Forms.Button btn_recherche;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbo_profil_recherche;
+        private System.Windows.Forms.GroupBox grbRecherche;
     }
 }
 

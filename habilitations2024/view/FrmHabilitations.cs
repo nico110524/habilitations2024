@@ -33,6 +33,7 @@ namespace habilitations2024.view
         /// Controleur de la fenêtre
         /// </summary>
         private FrmHabilitationsController controller;
+        private string recherche;
 
         /// <summary>
         /// construction des composants graphiques et appel des autres initialisations
@@ -61,7 +62,7 @@ namespace habilitations2024.view
         /// </summary>
         private void RemplirListeDeveloppeurs()
         {
-            List<Developpeur> lesDeveloppeurs = controller.GetLesDeveloppeurs();
+            List<Developpeur> lesDeveloppeurs = controller.GetLesDeveloppeurs(recherche);
             bdgDeveloppeurs.DataSource = lesDeveloppeurs;
             dgvDeveloppeurs.DataSource = bdgDeveloppeurs;
             dgvDeveloppeurs.Columns["iddeveloppeur"].Visible = false;
@@ -253,6 +254,37 @@ namespace habilitations2024.view
             txtPwd1.Text = "";
             txtPwd2.Text = "";
         }
+        /// <summary>
+        /// chargement du formumlaire & chargment du combo profil pour recherche avec une case vide 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmHabilitations_Load(object sender, EventArgs e)
+        {
 
+            List<Profil> lesProfils = controller.GetLesProfils();
+            bdgProfils.DataSource = lesProfils;
+            cbo_profil_recherche.DataSource = bdgProfils;
+            cbo_profil_recherche.SelectedIndex = 0;
+        }
+        /// <summary>
+        /// clic sur le bouton de recherche d'un profil 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_recherche_Click(object sender, EventArgs e)
+        {
+            string recherche = cbo_profil_recherche.SelectedItem.ToString();
+            if (cbo_profil_recherche.SelectedItem != recherche)
+            {
+                List<Developpeur> lesDeveloppeurs = controller.GetLesDeveloppeurs(recherche);
+                bdgDeveloppeurs.DataSource = lesDeveloppeurs;
+                dgvDeveloppeurs.DataSource = bdgDeveloppeurs;
+                dgvDeveloppeurs.Columns["iddeveloppeur"].Visible = false;
+                dgvDeveloppeurs.Columns["pwd"].Visible = false;
+                dgvDeveloppeurs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+
+        }
     }
 }

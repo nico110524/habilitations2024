@@ -63,14 +63,21 @@ namespace habilitations2024.dal
         /// Récupère et retourne les développeurs
         /// </summary>
         /// <returns>liste des développeurs</returns>
-        public List<Developpeur> GetLesDeveloppeurs()
+        public List<Developpeur> GetLesDeveloppeurs(string profilRechercher)
         {
+            
             List<Developpeur> lesDeveloppeurs = new List<Developpeur>();
-            if (access.Manager != null)
+            if (access.Manager != null || profilRechercher != "")
             {
                 string req = "select d.iddeveloppeur as iddeveloppeur, d.nom as nom, d.prenom as prenom, d.tel as tel, d.mail as mail, p.idprofil as idprofil, p.nom as profil ";
                 req += "from developpeur d join profil p on (d.idprofil = p.idprofil) ";
+                
+                if (!string.IsNullOrEmpty(profilRechercher))
+                {
+                    req += $"where p.nom = '{profilRechercher}'";
+                }
                 req += "order by nom, prenom;";
+
                 try
                 {
                     List<Object[]> records = access.Manager.ReqSelect(req);

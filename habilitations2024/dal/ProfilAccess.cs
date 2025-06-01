@@ -32,6 +32,8 @@ namespace habilitations2024.dal
         public List<Profil> GetLesProfils()
         {
             List<Profil> lesProfils = new List<Profil>();
+            // ajout d'une ligne vide a l'entrée de la liste de profil
+            lesProfils.Add(new Profil(0, ""));
             if (access.Manager != null)
             {
                 string req = "select * from profil order by nom;";
@@ -55,6 +57,35 @@ namespace habilitations2024.dal
             }
             return lesProfils;
         }
+        // test
+        public List<Profil> GetLesProfilsRecherche()
+        {
+            List<Profil> lesProfils = new List<Profil>();
+            if (access.Manager != null)
+            {
+                string req = "select * from profil order by nom;";
+                try
+                {
+                    List<Object[]> records = access.Manager.ReqSelect(req);
+                    if (records != null)
+                    {
+                        foreach (Object[] record in records)
+                        {
+                            Profil profil = new Profil((int)record[0], (string)record[1]);
+                            lesProfils.Add(profil);
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Environment.Exit(0);
+                }
+            }
+            return lesProfils;
+        }
+        // test 
 
     }
+
 }
